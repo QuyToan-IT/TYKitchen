@@ -1,0 +1,106 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat-header {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.chat-header .title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-header .name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #000;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.bubble {
+  margin-bottom: 10px;
+  max-width: 70%;
+}
+
+.bubble.me {
+  align-self: flex-end;
+  background: #dcf8c6;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.bubble.them {
+  align-self: flex-start;
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.bubble-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sender-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: #000;
+}
+
+.timestamp {
+  font-size: 11px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.chat-input button {
+  margin-left: 8px;
+  padding: 8px 12px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}

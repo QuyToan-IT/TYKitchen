@@ -1,0 +1,29 @@
+.admin-layout-container {
+  display: flex;
+  height: 100vh; /* Chiều cao bằng 100% màn hình */
+  background-color: #f8fafc; /* Màu nền chung cho toàn bộ layout */
+}
+
+.main-content-wrapper {
+  flex-grow: 1; /* Chiếm hết không gian còn lại */
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Đảm bảo wrapper cũng cao bằng màn hình */
+  overflow: hidden; /* Ngăn cuộn ở cấp độ này */
+}
+
+/* Higher specificity to override any other .main-content styles */
+.admin-layout-container .main-content-wrapper .main-content {
+  flex-grow: 1;
+  /* Thêm padding và cho phép cuộn nếu nội dung dài */
+  padding: 24px;
+  overflow-y: auto;
+  /* Force block display and reset grid */
+  display: block !important;
+  grid-template-columns: none !important;
+  gap: 0 !important;
+}
+
+/* Bạn cần đảm bảo Header và Sidebar có chiều cao/rộng cố định trong file CSS của chúng */
+/* Ví dụ trong SidebarAdmin.css: .admin-sidebar { width: 250px; } */
+/* Ví dụ trong HeaderAdmin.css: .admin-header { height: 70px; } */

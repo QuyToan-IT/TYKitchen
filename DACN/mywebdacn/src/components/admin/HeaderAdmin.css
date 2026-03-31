@@ -1,0 +1,126 @@
+.admin-header {
+  height: 70px; /* Chiều cao cố định cho header */
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  height: 40px;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.icon-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.icon-button:hover {
+  background-color: #f1f5f9;
+}
+
+.icon-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+}
+.settings-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 130%; /* Đẩy xuống dưới nút một chút */
+  right: -10px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 200px;
+  padding: 8px 0;
+  z-index: 1000;
+  border: 1px solid #e2e8f0;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Mũi tên nhỏ nhô lên */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 20px;
+  width: 12px;
+  height: 12px;
+  background: white;
+  transform: rotate(45deg);
+  border-left: 1px solid #e2e8f0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.dropdown-item {
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  /* ✅ CHỈNH MÀU CHỮ THÀNH ĐEN */
+  color: #000000; 
+}
+
+.dropdown-item:hover {
+  background-color: #f3f4f6; /* Màu nền xám nhẹ khi hover */
+  color: #000000; /* Vẫn giữ màu đen khi hover */
+}
+
+/* Riêng nút Đăng xuất cho màu đỏ để nổi bật (nếu muốn) */
+.dropdown-item.logout {
+  color: #ef4444; 
+  border-top: 1px solid #f1f5f9;
+  margin-top: 4px;
+} 
+
+.dropdown-item.logout:hover {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

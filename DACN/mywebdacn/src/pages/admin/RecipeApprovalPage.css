@@ -1,0 +1,161 @@
+.approval-page-container {
+  font-family: "Inter", sans-serif;
+  color: #232323; /* Sửa: Đặt màu chữ mặc định là đen */
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4c84ee;
+  margin-bottom: 25px;
+}
+
+.approval-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1.5fr 1fr 2fr; /* Adjusted for better spacing */
+  align-items: center;
+  padding: 15px 20px;
+  gap: 15px;
+}
+
+.table-header {
+  font-weight: 600;
+  color: #718ebf;
+  border-bottom: 2px solid #ddd;
+  background: #f7f9fc;
+  border-radius: 10px 10px 0 0;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+.data-row {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px;
+}
+
+.cell-content {
+  font-size: 15px;
+}
+
+.status-pending {
+  color: #f39c12;
+  font-weight: 500;
+}
+
+.action-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.action-btn {
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: opacity 0.2s;
+}
+
+.action-btn:hover {
+  opacity: 0.85;
+}
+
+.btn-approve {
+  background-color: #28a745; /* Green for approve */
+  color: white;
+  border-color: #28a745;
+}
+
+.btn-detail {
+  background-color: white;
+  color: #4c84ee;
+  border-color: #4c84ee;
+}
+
+.btn-reject {
+  background-color: #e33629; /* Red for reject/delete */
+  color: white;
+  border-color: #e33629;
+}
+
+/* Phân trang */
+.pagination { display: flex; justify-content: center; gap: 5px; margin-top: 30px; }
+.page-link { padding: 8px 15px; border-radius: 8px; text-decoration: none; color: #232323; background-color: white; border: 1px solid #ddd; font-weight: 500; }
+.page-link.active { background-color: #4c84ee; color: white; border-color: #4c84ee; }
+
+/* --- Modal Styles --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 500px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #888;
+}
+
+.modal-body textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

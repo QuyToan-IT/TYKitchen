@@ -1,0 +1,136 @@
+/* Sidebar container */
+.admin-sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Navigation wrapper */
+.admin-sidebar nav {
+  width: 100%;
+}
+
+/* Menu list */
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Main link style */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effect */
+.sidebar-link:hover {
+  background-color: #f1f5f9;
+  color: #000000;
+}
+
+/* Active link style */
+.sidebar-link.active {
+  background-color: #4c84ee;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(76, 132, 238, 0.3);
+}
+
+/* Icon style */
+.sidebar-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Text style */
+.sidebar-text {
+  font-size: 15px;
+  flex: 1;
+  text-align: left;
+  color: inherit;
+}
+
+/* Arrow for expandable items */
+.arrow {
+  margin-left: auto;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  color: inherit;
+}
+
+.parent-link.open .arrow {
+  transform: rotate(120deg);
+}
+
+/* Submenu container */
+.submenu {
+  margin-left: 30px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Submenu open state */
+.submenu.open {
+  max-height: 500px;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Submenu items */
+.submenu li {
+  margin: 5px 0;
+}
+
+/* Submenu link style */
+.submenu .sidebar-link {
+  padding: 8px 15px;
+  font-size: 14px;
+  gap: 10px;
+  color: #000000;
+}
+
+/* Submenu active style */
+.submenu .sidebar-link.active {
+  background-color: #4c84ee;
+  color: #ffffff;
+}
+/* Màu chữ mặc định */
+.sidebar-link,
+.sidebar-text,
+.submenu .sidebar-link,
+.submenu .sidebar-text {
+  color: #000000 !important;
+}
+
+/* Màu chữ khi hover */
+.sidebar-link:hover,
+.submenu .sidebar-link:hover {
+  color: #000000 !important;
+}
+
+/* Màu chữ khi active */
+.sidebar-link.active,
+.submenu .sidebar-link.active {
+  color: #ffffff !important;
+}

@@ -1,0 +1,127 @@
+version: "3.9"
+
+x-common-environment: &common-environment
+  SPRING_PROFILES_ACTIVE: docker
+  SPRING_DATASOURCE_USERNAME: root
+  SPRING_DATASOURCE_PASSWORD: rootpass
+  SPRING_JPA_HIBERNATE_DDL_AUTO: update
+  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka/
+
+x-common-depends-on: &common-depends-on
+  mysql:
+    condition: service_healthy
+  discovery-service:
+    condition: service_started
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-prootpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+    networks:
+      - dacn-net
+
+  discovery-service:
+    build:
+      context: ./discovery-service
+      dockerfile: Dockerfile
+    container_name: discovery-service
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - dacn-net
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      - "8888:8888"
+    depends_on: *common-depends-on
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka/
+    networks:
+      - dacn-net
+
+  recipe-service:
+    build:
+      context: ./recipe-service
+      dockerfile: Dockerfile
+    container_name: recipe-service
+    ports:
+      - "8081:8081"
+    depends_on: *common-depends-on
+    environment:
+      <<: *common-environment
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/recipes_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    volumes:
+      - D:/test/uploads:/upload   # ánh xạ thư mục host vào container
+    networks:
+      - dacn-net
+
+  article-service:
+    build:
+      context: ./article-service
+      dockerfile: Dockerfile
+    container_name: article-service
+    ports:
+      - "8082:8082"
+    depends_on: *common-depends-on
+    environment:
+      <<: *common-environment
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/articles_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    volumes:
+      - D:/test/uploads:/upload
+    networks:
+      - dacn-net
+
+  interaction-service:
+    build:
+      context: ./interaction-service
+      dockerfile: Dockerfile
+    container_name: interaction-service
+    ports:
+      - "8083:8083"
+    depends_on: *common-depends-on
+    environment:
+      <<: *common-environment
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/interactions_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    networks:
+      - dacn-net
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: user-service
+    ports:
+      - "8080:8080"
+    depends_on: *common-depends-on
+    environment:
+      <<: *common-environment
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/users_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      LOGGING_LEVEL_ORG_HIBERNATE: DEBUG
+      LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_TRANSACTION: TRACE
+    volumes:
+      - D:/test/uploads:/upload   # ánh xạ thư mục host vào container
+    networks:
+      - dacn-net
+
+volumes:
+  mysql_data:
+
+networks:
+  dacn-net:

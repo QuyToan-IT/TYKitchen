@@ -1,0 +1,256 @@
+.recipes-page-container {
+  font-family: "Inter", sans-serif;
+  padding: 16px;
+  width: 100%;
+  max-width: 1200px; /* giữ gọn trong màn hình */
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4c84ee;
+  margin-bottom: 25px;
+}
+
+/* Thanh công cụ: Tìm kiếm và nút Thêm */
+.top-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 12px;
+}
+
+/* Search: make responsive */
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: 44px;
+  background: #ebf2ff;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
+  position: absolute;
+}
+
+.search-box input {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: #4a5568;
+  outline: none;
+  flex-grow: 1;
+  padding-left: 24px;
+}
+
+.add-button {
+  width: 48px;
+  height: 48px;
+  background-color: #4c84ee;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  color: white;
+  border: none;
+  box-shadow: 0 10px 25px rgba(76, 132, 238, 0.35);
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.add-button:hover {
+  transform: scale(1.05);
+}
+
+/* Hàng bộ lọc */
+.filter-row {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.filter-label {
+  font-size: 17px;
+  font-weight: 500;
+  color: #2d3748;
+  white-space: nowrap;
+}
+
+.filter-item {
+  flex: 1;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid #dce3ed;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: #4a5568;
+  background: white;
+  cursor: pointer;
+  min-width: 190px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.filter-arrow {
+  width: 14px;
+  height: 14px;
+}
+
+/* Bảng dữ liệu dạng Grid */
+.data-table-container {
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.data-table-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr 120px; /* cố định ảnh + actions, nội dung linh hoạt */
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.data-table-grid:last-child {
+  border-bottom: none;
+}
+
+.table-header {
+  font-weight: 600;
+  color: #6b7a99;
+  font-size: 15px;
+  background-color: #f8fafd;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cell-image-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.recipe-image {
+  width: 110px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #e2e8f0;
+}
+
+.cell-text {
+  font-size: 15px;
+  color: #2d3748;
+}
+
+.cell-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.action-btn {
+  padding: 9px 20px;
+  border-radius: 28px;
+  border: 1px solid #c4d3f3;
+  background: white;
+  color: #5a7ee2;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
+  text-decoration: none;
+  text-align: center;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.action-btn.btn-delete {
+  color: #e53e3e;
+  border-color: #fee2e2;
+}
+
+/* Phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+.page-arrow,
+.page-number,
+.page-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 8px;
+  color: #4a5568;
+}
+
+.page-arrow,
+.page-number {
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.page-number:hover {
+  background-color: #ebf2ff;
+}
+
+.page-number.active {
+  background-color: #4c84ee;
+  color: white;
+  font-weight: 600;
+}
+
+/* Responsive: gọn cho màn hình nhỏ */
+@media (max-width: 1024px) {
+  .recipes-page-container { padding: 12px; max-width: 980px; }
+  .page-title { font-size: 24px; }
+  .search-box { max-width: 420px; height: 42px; }
+  .data-table-grid {
+    grid-template-columns: 90px 1fr 100px; /* 3 cột trên tablet */
+    padding: 10px 12px;
+  }
+  .recipe-image { width: 90px; height: 64px; }
+}
+
+@media (max-width: 768px) {
+  .top-controls { flex-direction: column; align-items: stretch; gap: 10px; }
+  .search-box { width: 100%; max-width: 100%; }
+  .data-table-grid {
+    grid-template-columns: 72px 1fr; /* ảnh + nội dung, actions xuống dưới */
+    grid-auto-rows: auto;
+    gap: 8px;
+  }
+  .cell-actions { justify-content: flex-start; grid-column: 1 / -1; }
+  .recipe-image { width: 72px; height: 56px; }
+  .page-title { font-size: 20px; margin-bottom: 16px; }
+}
