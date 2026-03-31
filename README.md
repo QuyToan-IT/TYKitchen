@@ -57,7 +57,7 @@ Hệ thống được chia thành các dịch vụ độc lập nằm trong thư
 
 1.  **Clone repository:**
     ```bash
-    git clone [https://github.com/QuyToan-IT/TYKitchen.git](https://github.com/QuyToan-IT/TYKitchen.git)
+    git clone https://github.com/QuyToan-IT/TYKitchen.git
     ```
 
 2.  **Cấu hình Database:**
